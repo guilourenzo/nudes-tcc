@@ -52,9 +52,7 @@
 			message = [imageData, canvas.width, canvas.height];
 			myWorker.postMessage(message);
 			myWorker.onmessage = function(event){
-				// resultHandler(event.data);
-
-				var titulo = document.getElementById("nudes").innerHTML = event.data ? "Nudes" : "Sem Nudes"
+				resultHandler(event.data);
 			}
 		},
 		// the result handler will be executed when the analysing process is done
