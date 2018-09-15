@@ -28,6 +28,7 @@
 
 	<script type="text/javascript" src="nude.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+	<script src="http://momentjs.com/downloads/moment.js"></script>
 
 	<script>
 
@@ -89,7 +90,7 @@
 				nude.scan((result) => {
 					var titulo = result ? "Imagem Imprópria" : "Imagem ok";
 					document.getElementById("nudes").innerHTML = titulo;
-					registerData(Date("2015-03-25"), input.files[0].name, titulo, document.getElementById('file-upload').value);
+					registerData(moment().format('DD/MM/YYYY HH:mm:ss'), input.files[0].name, titulo, document.getElementById('file-upload').value);
 				});
 			}, 50)
 		}
