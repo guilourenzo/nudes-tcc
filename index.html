@@ -1,30 +1,27 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<!-- /Added by HTTrack -->
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <head>
-	<title>Nudity Detection with HTMLCanvas and Javascript</title>
+	<title>Detecção de imagens impropias - Projeto de TCC - Impacta</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
-
-	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-
-
-	<link rel="icon" type="image/png" href="../favicon.png" />
 </head>
 
 <body>
 	<div id="wrapper">
-		<h1>Atividade TCC</h1>
+		<h1>Analisador de Imagens</h1>
 		<h2 id="nudes"></h2>
 
 		<div class="entry" id="caixa">
 			<div style="float:right;margin-top:-20px;" id="result4"></div>
 		</div>
 
+		<input type="file" id="file-upload" accept="image/*" onchange="readURL(this);" />
+
 	</div>
 
-	<input type='file' id="file-upload" onchange="readURL(this);" />
+
+
 
 	<script type="text/javascript" src="nude.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
@@ -67,19 +64,23 @@
 		function readURL(input) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
-				var image = null;
+
+				var image = new Image();
 
 				reader.onload = function (e) {
 					var imagemAntiga = document.getElementById("imagemTestar");
 					if (imagemAntiga)
 						imagemAntiga.remove();
 
-					image = new Image(500, 375);
-					image.src = e.target.result;
-					image.id = "imagemTestar";
+					var imageScreen = new Image(500, 375);
+
+					image.src = e.target.result;	
+					imageScreen.src = e.target.result;
+					
+					imageScreen.id = "imagemTestar";
 
 					var caixa = document.getElementById("caixa");
-					caixa.appendChild(image);
+					caixa.appendChild(imageScreen);
 				};
 
 				reader.readAsDataURL(input.files[0]);
@@ -97,7 +98,5 @@
 	</script>
 
 </body>
-
-<!-- Mirrored from www.patrick-wied.at/static/nudejs/demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Sep 2018 14:35:22 GMT -->
 
 </html>
